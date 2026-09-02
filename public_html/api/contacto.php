@@ -5,6 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 require __DIR__ . '/_bootstrap.php';
 
 use SuperWalter\GmailMailer;
+use SuperWalter\Recaptcha;
 
 function sw_h(string $s): string
 {
@@ -20,6 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Honeypot anti-spam: si un bot completa este campo oculto, fingimos éxito.
 if (!empty($_POST['website'])) {
     echo json_encode(['ok' => true]);
+    exit;
+}
+
+$recaptcha = new Recaptcha($GLOBALS['sw_env']);
+if (!$recaptcha->verify(trim($_POST['recaptcha_token'] ?? ''), 'contacto')) {
+    http_response_code(422);
+    echo json_encode(['ok' => false, 'error' => 'No pudimos validar el formulario. Recargá la página y probá de nuevo.']);
     exit;
 }
 

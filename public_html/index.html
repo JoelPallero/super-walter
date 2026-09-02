@@ -83,6 +83,13 @@
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
+  <div class="header mobile-menu__bar">
+    <div class="container header__inner">
+      <button class="nav-toggle" id="mobileMenuClose" aria-label="Cerrar menú" aria-expanded="true" aria-controls="mobileMenu">
+        <span class="nav-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
   <nav aria-label="Navegación móvil">
     <ul class="mobile-menu__list">
       <li><a class="mobile-menu__link" href="#lineup"><span class="n">01</span> Sembradoras</a></li>
@@ -491,7 +498,7 @@
             <div class="field"><label for="f-msg"><span class="field__num">06</span> Tu mensaje <span style="text-transform:none;letter-spacing:0;color:var(--texto-mute);font-weight:400">(opcional)</span></label><textarea id="f-msg" name="mensaje" placeholder="Cultivos, hectáreas, sistema de siembra..."></textarea></div>
             <div class="field"><button class="btn btn--amarillo btn--block" type="submit">Solicitar asesoramiento</button></div>
           </div>
-          <p class="form__note">Al enviar aceptás ser contactado por Super Walter. No compartimos tus datos. <!-- EDITAR: conectar a email / CRM / WhatsApp real --></p>
+          <p class="form__note">Al enviar aceptás ser contactado por Super Walter. No compartimos tus datos. Este sitio está protegido por reCAPTCHA y aplican la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad</a> y los <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Términos de Servicio</a> de Google.</p>
           <div class="form__success" id="formSuccess" role="status" aria-live="polite">
             <b>¡Listo! Recibimos tu consulta.</b>
             <span>Un asesor de Super Walter se va a comunicar con vos a la brevedad.</span>

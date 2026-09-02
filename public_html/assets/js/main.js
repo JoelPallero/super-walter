@@ -41,7 +41,7 @@
       }, { passive: true });
     } else {
       var raf = function () {
-        cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+        cx += (tx - cx) * 0.35; cy += (ty - cy) * 0.35;
         cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
         requestAnimationFrame(raf);
       };
@@ -148,6 +148,7 @@
   /* ---------- Menú móvil ---------- */
   var toggle = document.getElementById('navToggle');
   var menu = document.getElementById('mobileMenu');
+  var closeBtn = document.getElementById('mobileMenuClose');
 
   function closeMenu() {
     if (!menu) return;
@@ -169,6 +170,7 @@
     menu.addEventListener('click', function (e) {
       if (e.target.closest('a')) closeMenu();
     });
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && menu.classList.contains('is-open')) { closeMenu(); toggle.focus(); }
     });
@@ -196,7 +198,8 @@
   function animateCount(el) {
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-suffix') || '';
-    if (reduceMotion) { el.textContent = target + suffix; return; }
+    var prefix = el.getAttribute('data-prefix') || '';
+    if (reduceMotion) { el.textContent = prefix + target + suffix; return; }
 
     var dur = 1400, start = null;
     function tick(ts) {
@@ -204,9 +207,9 @@
       var t = Math.min((ts - start) / dur, 1);
       var eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
       var val = Math.round(target * eased);
-      el.textContent = val + suffix;
+      el.textContent = prefix + val + suffix;
       if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = target + suffix;
+      else el.textContent = prefix + target + suffix;
     }
     requestAnimationFrame(tick);
   }
@@ -255,13 +258,39 @@
     });
   });
 
+  /* ---------- reCAPTCHA v3 (carga la site key desde api/recaptcha-key.php, nunca queda escrita en el código fuente) ---------- */
+  var recaptchaReady = null;
+  function loadRecaptcha() {
+    if (recaptchaReady) return recaptchaReady;
+    recaptchaReady = fetch('api/recaptcha-key.php')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data || !data.key) { console.warn('reCAPTCHA: falta configurar la site key.'); return null; }
+        var siteKey = data.key;
+        return new Promise(function (resolve) {
+          var script = document.createElement('script');
+          script.src = 'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent(siteKey);
+          script.onload = function () {
+            window.grecaptcha.ready(function () { resolve(siteKey); });
+          };
+          script.onerror = function () { console.warn('reCAPTCHA: no se pudo cargar el script.'); resolve(null); };
+          document.head.appendChild(script);
+        });
+      })
+      .catch(function () { console.warn('reCAPTCHA: no se pudo obtener la site key.'); return null; });
+    return recaptchaReady;
+  }
+
   /* ---------- Formulario (envío real vía backend PHP, ver public_html/api/) ---------- */
   var form = document.getElementById('leadForm');
   var success = document.getElementById('formSuccess');
   if (form) {
     var endpoint = form.getAttribute('data-endpoint');
+    var recaptchaAction = endpoint ? endpoint.replace(/^.*\//, '').replace(/\.php$/, '') : 'submit';
     var submitBtn = form.querySelector('button[type="submit"]');
     var submitLabel = submitBtn ? submitBtn.textContent : '';
+
+    loadRecaptcha();
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -273,7 +302,16 @@
 
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
 
-      fetch(endpoint, { method: 'POST', body: new FormData(form) })
+      loadRecaptcha()
+        .then(function (siteKey) {
+          if (!siteKey) return '';
+          return window.grecaptcha.execute(siteKey, { action: recaptchaAction });
+        })
+        .then(function (token) {
+          var formData = new FormData(form);
+          formData.set('recaptcha_token', token || '');
+          return fetch(endpoint, { method: 'POST', body: formData });
+        })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (data) {
             return { ok: res.ok, data: data };

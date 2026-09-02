@@ -65,8 +65,8 @@
   }
 
   /* ---------- Helpers ---------- */
-  function mapsDirUrl(s) { return 'https://www.google.com/maps/dir/?api=1&destination=' + s.lat + ',' + s.lng; }
   function telHref(t) { return 'tel:' + t.replace(/[^\d+]/g, ''); }
+  function normalize(str) { return String(str).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function esc(str) {
     return String(str).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -84,11 +84,11 @@
   }
 
   function filtered() {
-    var q = state.q.trim().toLowerCase();
+    var q = normalize(state.q.trim());
     return DATA.filter(function (s) {
       if (s.c !== state.country) return false;
       if (state.province && s.p !== state.province) return false;
-      if (q && (s.n + ' ' + s.a).toLowerCase().indexOf(q) === -1) return false;
+      if (q && normalize(s.n + ' ' + s.a).indexOf(q) === -1) return false;
       return true;
     });
   }
@@ -113,7 +113,6 @@
               '<span class="suc-card__prov">' + esc(s.p) + '</span>' +
               '<h3>' + esc(s.n) + '</h3>' +
             '</div>' +
-            '<a class="suc-card__go" href="' + mapsDirUrl(s) + '" target="_blank" rel="noopener" aria-label="Cómo llegar a ' + esc(s.n) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>' +
           '</div>' +
           '<p class="suc-card__addr">' + esc(s.a) + '</p>' +
           meta +

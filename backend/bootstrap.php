@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/env.php';
 require __DIR__ . '/GmailMailer.php';
+require __DIR__ . '/Recaptcha.php';
 
 $projectRoot = sw_find_root(__DIR__, '.env');
 $GLOBALS['sw_env'] = sw_load_env($projectRoot . '/.env');
