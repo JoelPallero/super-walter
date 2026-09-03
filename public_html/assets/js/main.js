@@ -341,4 +341,27 @@
   if (video) {
     video.addEventListener('error', function () { video.removeAttribute('autoplay'); }, true);
   }
+
+  /* ---------- Historia: hover en timeline cambia la imagen ---------- */
+  document.querySelectorAll('.legacy__grid').forEach(function (grid) {
+    var media = grid.querySelector('.legacy__media');
+    var img = media && media.querySelector('img');
+    if (!media || !img) return;
+    var defaultSrc = img.getAttribute('data-default-src') || img.src;
+
+    var setSrc = function (src) {
+      if (!src || img.getAttribute('src') === src) return;
+      media.classList.add('is-swapping');
+      window.setTimeout(function () {
+        img.setAttribute('src', src);
+        media.classList.remove('is-swapping');
+      }, 60);
+    };
+
+    grid.querySelectorAll('.tl-item[data-hist-img]').forEach(function (item) {
+      item.addEventListener('mouseenter', function () { setSrc(item.getAttribute('data-hist-img')); });
+      item.addEventListener('focus', function () { setSrc(item.getAttribute('data-hist-img')); });
+    });
+    grid.querySelector('.timeline').addEventListener('mouseleave', function () { setSrc(defaultSrc); });
+  });
 })();
