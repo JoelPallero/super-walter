@@ -1,0 +1,287 @@
+[
+    {
+        "slug": "w1770-triflex",
+        "title": "W1770 Triflex",
+        "seo_title": "W1770 Triflex · Super Walter — Award-winning seeder at CITA 2025",
+        "seo_description": "W1770 Triflex: Super Walter seeder with a triple-articulated frame, Air Drill metering and ISOBUS monitoring. CITA 2025 Innovation Award.",
+        "og_title": "W1770 Triflex · Super Walter",
+        "og_description": "Triflex frame, Air Drill and ISOBUS. The seeder that won the CITA 2025 Award.",
+        "hero_image_alt": "Super Walter W1770 seeder at work at sunset in a stubble field",
+        "hero_pills": [
+            {
+                "text": "★ CITA 2025 Award",
+                "variant": "amarillo"
+            },
+            {
+                "text": "Fine grain · High capacity",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Triple-articulated folding frame and Air Drill discs. The answer when every day of seeding counts.",
+        "cta_hero_text": "Ask about the W1770",
+        "ficha_eyebrow": "Technology and innovation",
+        "ficha_heading": "The seeder designed so every seed finds its place, on any terrain.",
+        "ficha_image_alt": "Tractor with a Super Walter seeder working a hillside at sunset",
+        "ficha_badge": "Triflex frame",
+        "features": [
+            {
+                "icon": "bars",
+                "title": "Section control",
+                "text": "The machine automatically shuts off rows that have already been seeded, avoiding overlap and lowering the cost per hectare."
+            },
+            {
+                "icon": "clock",
+                "title": "Air Drill metering",
+                "text": "Precise, steady pneumatic distribution of seed and fertilizer, even at high travel speeds."
+            },
+            {
+                "icon": "monitor",
+                "title": "ISOBUS monitoring",
+                "text": "Full control from the cab: density, inputs and the performance of each unit in real time."
+            },
+            {
+                "icon": "cube",
+                "title": "Triflex frame",
+                "text": "Triple articulation that follows the terrain and keeps seeding depth even across the full working width."
+            }
+        ],
+        "benefits_heading": "An innovation award you can feel in the field.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Proven robustness",
+                "text": "Built to last season after season, with spare parts available across the country."
+            },
+            {
+                "number": "02",
+                "title": "Real precision",
+                "text": "Seeding uniformity that translates into better emergence and higher yield per hectare."
+            },
+            {
+                "number": "03",
+                "title": "Input efficiency",
+                "text": "Section control and precise metering: every seed and every kilo of fertilizer exactly where it belongs."
+            },
+            {
+                "number": "04",
+                "title": "Close to you",
+                "text": "Argentine-made, with direct support and a dealer network that knows your area."
+            }
+        ],
+        "cta_title_html": "Want a quote on the <em>W1770 Triflex</em>?",
+        "cta_lead": "Fill out the form and a Super Walter advisor will get in touch to move forward with your quote.",
+        "form_message_placeholder": "Hectares, crop, payment method...",
+        "listing_badge": {
+            "text": "★ CITA 2025 Award"
+        },
+        "homepage_chips": [
+            "Triflex frame",
+            "Air Drill",
+            "ISOBUS"
+        ],
+        "homepage_link_text": "View the W1770 overview"
+    },
+    {
+        "slug": "w660",
+        "title": "W660",
+        "seo_title": "W660 · Super Walter — Fine grain seeder",
+        "seo_description": "W660: Super Walter fine grain seeder delivering capacity and seeding uniformity without compromising precision. Built for demanding producers.",
+        "og_title": "W660 · Super Walter",
+        "og_description": "Capacity and seeding uniformity without compromising precision.",
+        "hero_image_alt": "Front view of the Super Walter W660 seeder over a field under a clear sky",
+        "hero_pills": [
+            {
+                "text": "Fine grain",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Capacity and seeding uniformity without compromising precision, built for demanding producers.",
+        "cta_hero_text": "Ask about the W660",
+        "ficha_eyebrow": "Model overview",
+        "ficha_heading": "Fine grain, capacity and uniformity in a single machine.",
+        "ficha_image_alt": "Super Walter W660 seeder",
+        "features": [
+            {
+                "icon": "clock",
+                "title": "Seeding uniformity",
+                "text": "Even seed distribution across the full working width, season after season."
+            },
+            {
+                "icon": "cube",
+                "title": "Rugged construction",
+                "text": "A structure built to work season after season without giving up performance."
+            },
+            {
+                "icon": "bars",
+                "title": "Work capacity",
+                "text": "Built to cover more hectares per day without sacrificing seeding precision."
+            }
+        ],
+        "benefits_heading": "Built for demanding producers.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Proven robustness",
+                "text": "Built to last season after season, with spare parts available across the country."
+            },
+            {
+                "number": "02",
+                "title": "Real precision",
+                "text": "Seeding uniformity that translates into better emergence and higher yield per hectare."
+            },
+            {
+                "number": "03",
+                "title": "Input efficiency",
+                "text": "Precise metering: every seed and every kilo of fertilizer exactly where it belongs."
+            },
+            {
+                "number": "04",
+                "title": "Close to you",
+                "text": "Argentine-made, with direct support and a dealer network that knows your area."
+            }
+        ],
+        "cta_title_html": "Want a quote on the <em>W660</em>?",
+        "cta_lead": "Fill out the form and a Super Walter advisor will get in touch to move forward with your quote.",
+        "form_message_placeholder": "Hectares, crop, payment method...",
+        "listing_badge": {
+            "text": "Fine grain"
+        }
+    },
+    {
+        "slug": "w650-imperial",
+        "title": "W650 Imperial",
+        "seo_title": "W650 Imperial · Super Walter — Autotrailer seeder",
+        "seo_description": "W650 Imperial: Super Walter autotrailer seeder, combining transport versatility and seeding in a single machine. Ready to move between fields in minutes.",
+        "og_title": "W650 Imperial · Super Walter",
+        "og_description": "Transport versatility and seeding in a single machine.",
+        "hero_image_alt": "Aerial view of the Super Walter W650 Imperial seeder folded over stubble",
+        "hero_pills": [
+            {
+                "text": "Autotrailer",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Transport versatility and seeding in a single machine. Ready to move between fields in minutes.",
+        "cta_hero_text": "Ask about the W650 Imperial",
+        "ficha_eyebrow": "Model overview",
+        "ficha_heading": "It folds, travels and goes back to seeding, all in the same machine.",
+        "ficha_image_alt": "Aerial view of the Super Walter W650 Imperial seeder folded over stubble",
+        "ficha_badge": "Autotrailer",
+        "features": [
+            {
+                "icon": "cube",
+                "title": "Autotrailer system",
+                "text": "Built-in folding for travel on roads or farm tracks, with no need for a separate rig."
+            },
+            {
+                "icon": "clock",
+                "title": "Speed between fields",
+                "text": "Less time maneuvering and more time seeding, especially when the weather window is short."
+            },
+            {
+                "icon": "bars",
+                "title": "Seeding versatility",
+                "text": "One machine to transport and seed, designed for fields spread across different areas."
+            },
+            {
+                "icon": "monitor",
+                "title": "Super Walter robustness",
+                "text": "The same build quality as the entire lineup, adapted to a machine designed to be on the move."
+            }
+        ],
+        "benefits_heading": "Mobility without compromising precision.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Proven robustness",
+                "text": "Built to last season after season, with spare parts available across the country."
+            },
+            {
+                "number": "02",
+                "title": "Real precision",
+                "text": "Seeding uniformity that translates into better emergence and higher yield per hectare."
+            },
+            {
+                "number": "03",
+                "title": "Input efficiency",
+                "text": "Precise metering: every seed and every kilo of fertilizer exactly where it belongs."
+            },
+            {
+                "number": "04",
+                "title": "Close to you",
+                "text": "Argentine-made, with direct support and a dealer network that knows your area."
+            }
+        ],
+        "cta_title_html": "Want a quote on the <em>W650 Imperial</em>?",
+        "cta_lead": "Fill out the form and a Super Walter advisor will get in touch to move forward with your quote.",
+        "form_message_placeholder": "Hectares, crop, payment method...",
+        "listing_badge": {
+            "text": "Autotrailer"
+        }
+    },
+    {
+        "slug": "familia-w630-w4500-rastra-at",
+        "title": "W630 · W4500 · Rastra AT",
+        "seo_title": "W630 · W4500 · Rastra AT · Super Walter — The complete family",
+        "seo_description": "From three-point fine grain seeding to coarse grain, plus soil preparation. W630, W4500 and Rastra AT: the Super Walter catalog that covers every need in the field.",
+        "og_title": "W630 · W4500 · Rastra AT · Super Walter",
+        "og_description": "A catalog that covers every need in the field.",
+        "hero_image_alt": "Super Walter seeder pulled by a tractor hard at work",
+        "hero_pills": [
+            {
+                "text": "Complete family",
+                "variant": "outline"
+            }
+        ],
+        "lead": "From three-point fine grain seeding to coarse grain. A catalog that covers every need in the field.",
+        "cta_hero_text": "Talk to an advisor",
+        "ficha_eyebrow": "Three machines, one catalog",
+        "ficha_heading": "A model for every stage of the work in the field.",
+        "sub_models": [
+            {
+                "icon": "bars",
+                "title": "W630 · Fine grain, three-point",
+                "text": "Three-point seeder designed for fine grain, ideal for smaller fields without sacrificing precision."
+            },
+            {
+                "icon": "clock",
+                "title": "W4500 · Coarse grain",
+                "text": "Seeder designed for coarse grain, with Super Walter robustness in every seeding unit."
+            },
+            {
+                "icon": "monitor",
+                "title": "Rastra AT",
+                "text": "Disc harrow for soil preparation before seeding, with the strength that heavy-duty work demands."
+            }
+        ],
+        "benefits_heading": "The same Super Walter engineering at every stage of the work.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Proven robustness",
+                "text": "Machines built to last season after season, with spare parts available across the country."
+            },
+            {
+                "number": "02",
+                "title": "Real precision",
+                "text": "Seeding uniformity that translates into better emergence and higher yield per hectare."
+            },
+            {
+                "number": "03",
+                "title": "Complete catalog",
+                "text": "From soil preparation to fine or coarse grain seeding, all within the same brand."
+            },
+            {
+                "number": "04",
+                "title": "Close to you",
+                "text": "Argentine-made, with direct support and a dealer network that knows your area."
+            }
+        ],
+        "cta_title_html": "Which of the three do you need?",
+        "cta_lead": "Fill out the form and a Super Walter advisor will get in touch to help you choose the right machine.",
+        "form_message_placeholder": "Tell us which model interests you and why...",
+        "listing_badge": {
+            "text": "Complete family"
+        }
+    }
+]

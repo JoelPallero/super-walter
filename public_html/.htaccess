@@ -1,0 +1,55 @@
+RewriteEngine On
+
+# Las redirecciones usan la ruta absoluta de REQUEST_URI (%1): un destino relativo, sin RewriteBase,
+# arma la URL con la ruta física del servidor cuando el sitio vive en una subcarpeta.
+# URLs viejas .html -> .php (301)
+RewriteCond %{REQUEST_URI} ^(.*)/(empresa|contacto|sucursales|trabaja-con-nosotros)\.html$
+RewriteRule ^ %1/%2 [R=301,L]
+
+# /productos/{slug} -> productos/producto.php?slug={slug}
+RewriteRule ^productos/([a-z0-9-]+)/?$ productos/producto.php?slug=$1 [L,QSA]
+
+# /novedades/{slug} -> novedades/novedad.php?slug={slug}
+RewriteRule ^novedades/([a-z0-9-]+)/?$ novedades/novedad.php?slug=$1 [L,QSA]
+
+# /catalogo/{slug} -> catalogo/item.php?slug={slug}
+RewriteRule ^catalogo/([a-z0-9-]+)/?$ catalogo/item.php?slug=$1 [L,QSA]
+
+# English: /en/products/{slug}, /en/news/{slug}, /en/catalog/{slug}
+RewriteRule ^en/products/([a-z0-9-]+)/?$ en/products/product.php?slug=$1 [L,QSA]
+RewriteRule ^en/news/([a-z0-9-]+)/?$ en/news/article.php?slug=$1 [L,QSA]
+RewriteRule ^en/catalog/([a-z0-9-]+)/?$ en/catalog/item.php?slug=$1 [L,QSA]
+
+# Listados cuyo nombre coincide con una carpeta (novedades/, en/news/): sin esto Apache responde 403 (carpeta sin index).
+RewriteCond %{REQUEST_URI} ^(.*)/$
+RewriteRule ^(novedades|en/news)/$ %1 [R=301,L]
+RewriteRule ^novedades$ novedades.php [L]
+RewriteRule ^en/news$ en/news.php [L]
+
+# Apache redirige por su cuenta /novedades -> /novedades/ (es carpeta) y chocaba con la regla de arriba (bucle).
+# Se desactiva y se agrega la barra a mano, solo para el resto de las carpetas (/admin, /en...).
+DirectorySlash Off
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} ^(.*[^/])$
+RewriteRule ^ %1/ [R=301,L]
+
+# URLs sin .php (no aplica a /admin ni /api).
+# 1) Si piden la URL con .php, redirigir (301) a la limpia. THE_REQUEST evita el bucle con la regla 2.
+RewriteCond %{REQUEST_URI} !/(admin|api)/
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^\s?]*\.php[\s?]
+RewriteCond %{REQUEST_URI} ^(.*/)index\.php$
+RewriteRule ^index\.php$ %1 [R=301,L]
+RewriteCond %{REQUEST_URI} !/(admin|api)/
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^\s?]*\.php[\s?]
+RewriteCond %{REQUEST_URI} ^(.*/en/)index\.php$
+RewriteRule ^en/index\.php$ %1 [R=301,L]
+RewriteCond %{REQUEST_URI} !/(admin|api)/
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^\s?]*\.php[\s?]
+RewriteCond %{REQUEST_URI} ^(.*)\.php$
+RewriteRule ^ %1 [R=301,L]
+
+# 2) Servir /empresa, /en/company, etc. desde su .php (solo si el archivo existe).
+#    Sin chequear "!-d": /novedades y /en/news son también carpetas (con las fichas) y tienen su listado .php.
+RewriteCond %{REQUEST_URI} !/(admin|api)/
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]

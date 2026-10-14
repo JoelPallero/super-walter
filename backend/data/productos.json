@@ -1,0 +1,306 @@
+[
+    {
+        "slug": "w1770-triflex",
+        "title": "W1770 Triflex",
+        "seo_title": "W1770 Triflex · Super Walter — Sembradora premiada en el CITA 2025",
+        "seo_description": "W1770 Triflex: sembradora Super Walter con chasis triple articulado, dosificación Air Drill y monitoreo ISOBUS. Premio CITA 2025 a la innovación.",
+        "og_title": "W1770 Triflex · Super Walter",
+        "og_description": "Chasis Triflex, Air Drill e ISOBUS. La sembradora premiada en el CITA 2025.",
+        "hero_image": "assets/img/w1770.webp",
+        "hero_image_alt": "Sembradora Super Walter W1770 sembrando al atardecer en un lote de rastrojo",
+        "hero_pills": [
+            {
+                "text": "★ Premio CITA 2025",
+                "variant": "amarillo"
+            },
+            {
+                "text": "Grano fino · Alta capacidad",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Triple articulado con sistema de plegado y discos air drill. La respuesta cuando cada jornada de siembra cuenta.",
+        "cta_hero_text": "Consultar por la W1770",
+        "ficha_eyebrow": "Tecnología e innovación",
+        "ficha_heading": "La sembradora pensada para que cada semilla encuentre su lugar, en cualquier terreno.",
+        "ficha_layout": "side_image",
+        "ficha_image": "assets/img/tractor-loma.webp",
+        "ficha_image_alt": "Tractor con sembradora Super Walter sembrando en una loma al atardecer",
+        "ficha_badge": "Chasis Triflex",
+        "features": [
+            {
+                "icon": "bars",
+                "title": "Corte por sección",
+                "text": "La máquina apaga automáticamente las líneas ya sembradas, evitando superposiciones y bajando el costo por hectárea."
+            },
+            {
+                "icon": "clock",
+                "title": "Dosificación Air Drill",
+                "text": "Distribución neumática precisa y constante de semilla y fertilizante, aún a alta velocidad de avance."
+            },
+            {
+                "icon": "monitor",
+                "title": "Monitoreo ISOBUS",
+                "text": "Control total desde la cabina: densidad, insumos y desempeño de cada cuerpo en tiempo real."
+            },
+            {
+                "icon": "cube",
+                "title": "Chasis Triflex",
+                "text": "Triple articulación que copia el terreno y mantiene la profundidad de siembra pareja en todo el ancho de labor."
+            }
+        ],
+        "benefits_heading": "Un premio a la innovación que se siente en el lote.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Robustez probada",
+                "text": "Diseñada para durar campañas, con repuestos disponibles en todo el país."
+            },
+            {
+                "number": "02",
+                "title": "Precisión real",
+                "text": "Uniformidad de siembra que se traduce en mejor emergencia y más rinde por hectárea."
+            },
+            {
+                "number": "03",
+                "title": "Eficiencia de insumos",
+                "text": "Corte por sección y dosificación precisa: cada semilla y cada kilo de fertilizante en su lugar."
+            },
+            {
+                "number": "04",
+                "title": "Cercanía",
+                "text": "Fábrica argentina, soporte directo y una red de concesionarios que conoce tu zona."
+            }
+        ],
+        "cta_title_html": "¿Querés cotizar la <em>W1770 Triflex</em>?",
+        "cta_lead": "Completá el formulario y un asesor de Super Walter se comunica con vos para avanzar con la cotización.",
+        "form_message_placeholder": "Hectáreas, cultivo, forma de pago...",
+        "listing_badge": {
+            "text": "★ Premio CITA 2025",
+            "variant": "amarillo"
+        },
+        "is_homepage_featured": true,
+        "homepage_chips": [
+            "Chasis Triflex",
+            "Air Drill",
+            "ISOBUS"
+        ],
+        "homepage_link_text": "Ver ficha de la W1770"
+    },
+    {
+        "slug": "w660",
+        "title": "W660",
+        "seo_title": "W660 · Super Walter — Sembradora de grano fino",
+        "seo_description": "W660: sembradora Super Walter de grano fino, con capacidad y uniformidad de siembra sin resignar precisión. Pensada para el productor exigente.",
+        "og_title": "W660 · Super Walter",
+        "og_description": "Capacidad y uniformidad de siembra sin resignar precisión.",
+        "hero_image": "assets/img/sembradora-frente.webp",
+        "hero_image_alt": "Sembradora Super Walter W660 de frente sobre un lote con cielo despejado",
+        "hero_pills": [
+            {
+                "text": "Grano fino",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Capacidad y uniformidad de siembra sin resignar precisión, pensada para el productor exigente.",
+        "cta_hero_text": "Consultar por la W660",
+        "ficha_eyebrow": "Ficha del modelo",
+        "ficha_heading": "Grano fino, capacidad y uniformidad en un mismo equipo.",
+        "ficha_layout": "single_image",
+        "ficha_image": "assets/img/w660-cutout.webp",
+        "ficha_image_alt": "Sembradora Super Walter W660",
+        "features": [
+            {
+                "icon": "clock",
+                "title": "Uniformidad de siembra",
+                "text": "Distribución pareja de semilla a lo largo de todo el ancho de labor, campaña tras campaña."
+            },
+            {
+                "icon": "cube",
+                "title": "Robustez de fabricación",
+                "text": "Estructura pensada para trabajar campaña tras campaña sin resignar rendimiento."
+            },
+            {
+                "icon": "bars",
+                "title": "Capacidad de trabajo",
+                "text": "Pensada para cubrir más hectáreas por jornada sin resignar la precisión de siembra."
+            }
+        ],
+        "benefits_heading": "Pensada para el productor exigente.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Robustez probada",
+                "text": "Diseñada para durar campañas, con repuestos disponibles en todo el país."
+            },
+            {
+                "number": "02",
+                "title": "Precisión real",
+                "text": "Uniformidad de siembra que se traduce en mejor emergencia y más rinde por hectárea."
+            },
+            {
+                "number": "03",
+                "title": "Eficiencia de insumos",
+                "text": "Dosificación precisa: cada semilla y cada kilo de fertilizante en su lugar."
+            },
+            {
+                "number": "04",
+                "title": "Cercanía",
+                "text": "Fábrica argentina, soporte directo y una red de concesionarios que conoce tu zona."
+            }
+        ],
+        "cta_title_html": "¿Querés cotizar la <em>W660</em>?",
+        "cta_lead": "Completá el formulario y un asesor de Super Walter se comunica con vos para avanzar con la cotización.",
+        "form_message_placeholder": "Hectáreas, cultivo, forma de pago...",
+        "listing_badge": {
+            "text": "Grano fino",
+            "variant": "plain"
+        },
+        "is_homepage_featured": false
+    },
+    {
+        "slug": "w650-imperial",
+        "title": "W650 Imperial",
+        "seo_title": "W650 Imperial · Super Walter — Sembradora autotrailer",
+        "seo_description": "W650 Imperial: sembradora Super Walter autotrailer, versatilidad de transporte y siembra en un mismo equipo. Lista para moverse entre lotes en minutos.",
+        "og_title": "W650 Imperial · Super Walter",
+        "og_description": "Versatilidad de transporte y siembra en un mismo equipo.",
+        "hero_image": "assets/img/w650-aereo.webp",
+        "hero_image_alt": "Vista aérea de la sembradora Super Walter W650 Imperial plegada sobre rastrojo",
+        "hero_pills": [
+            {
+                "text": "Autotrailer",
+                "variant": "outline"
+            }
+        ],
+        "lead": "Versatilidad de transporte y siembra en un mismo equipo. Lista para moverse entre lotes en minutos.",
+        "cta_hero_text": "Consultar por la W650 Imperial",
+        "ficha_eyebrow": "Ficha del modelo",
+        "ficha_heading": "Se pliega, se traslada y vuelve a sembrar en el mismo equipo.",
+        "ficha_layout": "side_image",
+        "ficha_image": "assets/img/w650-aereo.webp",
+        "ficha_image_alt": "Vista aérea de la sembradora Super Walter W650 Imperial plegada sobre rastrojo",
+        "ficha_badge": "Autotrailer",
+        "features": [
+            {
+                "icon": "cube",
+                "title": "Sistema autotrailer",
+                "text": "Plegado propio para el traslado por ruta o camino interno, sin depender de un equipo aparte."
+            },
+            {
+                "icon": "clock",
+                "title": "Rapidez entre lotes",
+                "text": "Menos tiempo de maniobra y más tiempo sembrando, sobre todo cuando la ventana climática es corta."
+            },
+            {
+                "icon": "bars",
+                "title": "Versatilidad de siembra",
+                "text": "Un mismo equipo para transportar y sembrar, pensado para lotes distribuidos en distintas zonas."
+            },
+            {
+                "icon": "monitor",
+                "title": "Robustez Super Walter",
+                "text": "La misma calidad de fabricación de toda la línea, adaptada a un equipo pensado para moverse."
+            }
+        ],
+        "benefits_heading": "Movilidad sin resignar precisión.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Robustez probada",
+                "text": "Diseñada para durar campañas, con repuestos disponibles en todo el país."
+            },
+            {
+                "number": "02",
+                "title": "Precisión real",
+                "text": "Uniformidad de siembra que se traduce en mejor emergencia y más rinde por hectárea."
+            },
+            {
+                "number": "03",
+                "title": "Eficiencia de insumos",
+                "text": "Dosificación precisa: cada semilla y cada kilo de fertilizante en su lugar."
+            },
+            {
+                "number": "04",
+                "title": "Cercanía",
+                "text": "Fábrica argentina, soporte directo y una red de concesionarios que conoce tu zona."
+            }
+        ],
+        "cta_title_html": "¿Querés cotizar la <em>W650 Imperial</em>?",
+        "cta_lead": "Completá el formulario y un asesor de Super Walter se comunica con vos para avanzar con la cotización.",
+        "form_message_placeholder": "Hectáreas, cultivo, forma de pago...",
+        "listing_badge": {
+            "text": "Autotrailer",
+            "variant": "plain"
+        },
+        "is_homepage_featured": false
+    },
+    {
+        "slug": "familia-w630-w4500-rastra-at",
+        "title": "W630 · W4500 · Rastra AT",
+        "seo_title": "W630 · W4500 · Rastra AT · Super Walter — Familia completa",
+        "seo_description": "De la siembra de grano fino en tres puntos a la de grano grueso, y la preparación del suelo. W630, W4500 y Rastra AT: el catálogo Super Walter que cubre cada necesidad del campo.",
+        "og_title": "W630 · W4500 · Rastra AT · Super Walter",
+        "og_description": "Un catálogo que cubre cada necesidad del campo.",
+        "hero_image": "assets/img/campo-arboles.webp",
+        "hero_image_alt": "Sembradora Super Walter traccionada por un tractor en pleno trabajo",
+        "hero_pills": [
+            {
+                "text": "Familia completa",
+                "variant": "outline"
+            }
+        ],
+        "lead": "De la siembra de grano fino en tres puntos a la de grano grueso. Un catálogo que cubre cada necesidad del campo.",
+        "cta_hero_text": "Hablar con un asesor",
+        "ficha_eyebrow": "Tres equipos, un mismo catálogo",
+        "ficha_heading": "Un modelo para cada etapa del trabajo en el lote.",
+        "ficha_layout": "no_image_multi_model",
+        "sub_models": [
+            {
+                "icon": "bars",
+                "title": "W630 · Grano fino, tres puntos",
+                "text": "Sembradora de tres puntos pensada para grano fino, ideal para lotes de menor escala sin resignar precisión."
+            },
+            {
+                "icon": "clock",
+                "title": "W4500 · Grano grueso",
+                "text": "Sembradora pensada para grano grueso, con la robustez Super Walter en cada cuerpo de siembra."
+            },
+            {
+                "icon": "monitor",
+                "title": "Rastra AT",
+                "text": "Rastra de discos para la preparación del suelo previa a la siembra, con la resistencia que exige el trabajo pesado."
+            }
+        ],
+        "benefits_heading": "La misma ingeniería Super Walter, en cada etapa del trabajo.",
+        "benefits": [
+            {
+                "number": "01",
+                "title": "Robustez probada",
+                "text": "Máquinas diseñadas para durar campañas, con repuestos disponibles en todo el país."
+            },
+            {
+                "number": "02",
+                "title": "Precisión real",
+                "text": "Uniformidad de siembra que se traduce en mejor emergencia y más rinde por hectárea."
+            },
+            {
+                "number": "03",
+                "title": "Catálogo completo",
+                "text": "De la preparación del suelo a la siembra de grano fino o grueso, todo dentro de la misma marca."
+            },
+            {
+                "number": "04",
+                "title": "Cercanía",
+                "text": "Fábrica argentina, soporte directo y una red de concesionarios que conoce tu zona."
+            }
+        ],
+        "cta_title_html": "¿Cuál de los tres necesitás?",
+        "cta_lead": "Completá el formulario y un asesor de Super Walter se comunica con vos para ayudarte a elegir el equipo justo.",
+        "form_message_placeholder": "Contanos qué modelo te interesa y por qué...",
+        "listing_badge": {
+            "text": "Familia completa",
+            "variant": "plain"
+        },
+        "is_homepage_featured": false
+    }
+]

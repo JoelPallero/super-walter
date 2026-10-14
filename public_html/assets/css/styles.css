@@ -86,7 +86,7 @@ ul { margin:0; padding:0; list-style:none; }
 .cursor.is-hidden { opacity:0 !important; }
 .cursor.is-hover img { transform:scale(1.45); }
 .cursor.is-down img { transform:scale(.82); }
-@media (pointer:fine) { .has-gota, .has-gota a, .has-gota button, .has-gota .btn { cursor:none; } .has-gota input, .has-gota textarea, .has-gota select { cursor:text; } }
+@media (pointer:fine) { .has-gota, .has-gota a, .has-gota button, .has-gota .btn, .has-gota .card-model, .has-gota .news-card { cursor:none; } .has-gota input, .has-gota textarea, .has-gota select { cursor:text; } }
 
 /* ---------- 4. Utilidades ---------- */
 .container { width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
@@ -148,6 +148,12 @@ ul { margin:0; padding:0; list-style:none; }
 .nav__link { position:relative; color:#fff; font-size:var(--step--1); font-weight:500; padding:.5rem .95rem; border-radius:var(--pill); transition:color .3s var(--ease), background .3s var(--ease); }
 .header.is-scrolled .nav__link { color:var(--texto); }
 .nav__link:hover, .nav__link:focus-visible, .nav__link.is-active { background:var(--amarillo); color:var(--negro); }
+.nav__item--dropdown { position:relative; }
+.nav__dropdown { position:absolute; top:100%; left:0; margin-top:.4rem; min-width:200px; background:#fff; border-radius:var(--leaf-sm); box-shadow:var(--shadow); padding:.5rem; display:flex; flex-direction:column; gap:.15rem; opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
+.nav__dropdown::before { content:""; position:absolute; left:0; right:0; top:-.6rem; height:.6rem; } /* puente: evita perder el hover en el hueco entre el link y el panel */
+.nav__item--dropdown:hover .nav__dropdown,.nav__item--dropdown:focus-within .nav__dropdown { opacity:1; visibility:visible; transform:none; }
+.nav__dropdown-link { display:block; padding:.55rem .8rem; border-radius:calc(var(--r) - 4px); color:var(--texto); font-size:var(--step--1); font-weight:500; white-space:nowrap; }
+.nav__dropdown-link:hover, .nav__dropdown-link:focus-visible { background:var(--paper-2); color:var(--bordo); }
 .header__cta { display:none; --bg:var(--amarillo); --fg:var(--negro); padding:.8rem 1.35rem; font-weight:600; box-shadow:none; overflow:hidden; position:relative; z-index:0; }
 .header__cta::before { content:""; width:9px; height:9px; border-radius:50%; background:currentColor; flex:none; transition:transform .35s var(--ease); }
 .header__cta::after { content:""; position:absolute; inset:0; z-index:-1; background:var(--bordo); border-radius:inherit; transform:translateY(101%); transition:transform .4s var(--ease); }
@@ -172,11 +178,22 @@ ul { margin:0; padding:0; list-style:none; }
 .mobile-menu__list { display:flex; flex-direction:column; gap:.2rem; }
 .mobile-menu__link { color:#fff; font-size:clamp(1.9rem,9vw,2.8rem); font-weight:700; letter-spacing:-.02em; padding:.5rem 0; display:flex; align-items:baseline; gap:1rem; opacity:0; transform:translateY(20px); }
 .mobile-menu__link .n { font-size:1rem; font-weight:500; color:var(--amarillo-cl); }
+.mobile-menu__link--sub { font-size:clamp(1.05rem,4vw,1.4rem); font-weight:600; padding:.25rem 0 .25rem 2.4rem; opacity:.88; }
 .mobile-menu.is-open .mobile-menu__link { animation:mm-in .5s var(--ease) forwards; }
-.mobile-menu.is-open .mobile-menu__link:nth-child(1){animation-delay:.1s} .mobile-menu.is-open .mobile-menu__link:nth-child(2){animation-delay:.16s}
-.mobile-menu.is-open .mobile-menu__link:nth-child(3){animation-delay:.22s} .mobile-menu.is-open .mobile-menu__link:nth-child(4){animation-delay:.28s}
-.mobile-menu.is-open .mobile-menu__link:nth-child(5){animation-delay:.34s} .mobile-menu.is-open .mobile-menu__link:nth-child(6){animation-delay:.4s}
+.mobile-menu.is-open .mobile-menu__list > li:nth-child(1) .mobile-menu__link{animation-delay:.1s} .mobile-menu.is-open .mobile-menu__list > li:nth-child(2) .mobile-menu__link{animation-delay:.14s}
+.mobile-menu.is-open .mobile-menu__list > li:nth-child(3) .mobile-menu__link{animation-delay:.18s} .mobile-menu.is-open .mobile-menu__list > li:nth-child(4) .mobile-menu__link{animation-delay:.22s}
+.mobile-menu.is-open .mobile-menu__list > li:nth-child(5) .mobile-menu__link{animation-delay:.26s} .mobile-menu.is-open .mobile-menu__list > li:nth-child(6) .mobile-menu__link{animation-delay:.3s}
+.mobile-menu.is-open .mobile-menu__list > li:nth-child(7) .mobile-menu__link{animation-delay:.34s} .mobile-menu.is-open .mobile-menu__list > li:nth-child(8) .mobile-menu__link{animation-delay:.38s}
 @keyframes mm-in { to { opacity:1; transform:none; } }
+/* Selector de idioma: dos banderas circulares dentro de una píldora, a la derecha del header */
+.lang-switch { display:inline-flex; align-items:center; gap:.3rem; margin-left:auto; padding:.28rem; border-radius:var(--pill); background:rgba(255,255,255,.16); transition:background .45s var(--ease); }
+.header.is-scrolled .lang-switch { background:rgba(36,26,21,.08); }
+.lang-switch a { display:block; width:32px; height:32px; border-radius:50%; opacity:.5; filter:saturate(.7); transition:opacity .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease), filter .3s var(--ease); }
+.lang-switch a:hover, .lang-switch a:focus-visible { opacity:1; filter:none; transform:translateY(-2px); }
+.lang-switch a.is-current { opacity:1; filter:none; box-shadow:0 0 0 2px var(--amarillo); }
+.lang-switch .flag { display:block; width:100%; height:100%; border-radius:50%; overflow:hidden; }
+.lang-switch .flag svg { display:block; width:100%; height:100%; }
+.mobile-menu__bar .lang-switch { pointer-events:auto; margin-right:.8rem; }
 .mobile-menu__foot { margin-top:2.2rem; color:rgba(255,255,255,.7); }
 .mobile-menu__foot a { color:var(--amarillo-cl); font-weight:600; }
 
@@ -250,7 +267,7 @@ ul { margin:0; padding:0; list-style:none; }
 /* ---------- 10. Line-up (cinematográfico) ---------- */
 .lineup { background:linear-gradient(180deg, #0d0a09, #17110e); color:#fff; }
 .lineup__grid { display:grid; gap:1.4rem; margin-top:clamp(2rem,4vw,3rem); }
-.card-model { position:relative; display:flex; flex-direction:column; background:var(--carbon); border-radius:var(--leaf); overflow:hidden; transition:transform .5s var(--ease), box-shadow .5s var(--ease); box-shadow:0 20px 40px -30px rgba(0,0,0,.9); }
+.card-model { position:relative; display:flex; flex-direction:column; background:var(--carbon); border-radius:var(--leaf); overflow:hidden; cursor:pointer; transition:transform .5s var(--ease), box-shadow .5s var(--ease); box-shadow:0 20px 40px -30px rgba(0,0,0,.9); }
 .card-model:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
 .card-model__media { position:relative; aspect-ratio:16/11; overflow:hidden; }
 .card-model__media img { width:100%; height:100%; object-fit:cover; transition:transform 1.1s var(--ease); }
@@ -406,7 +423,7 @@ ul { margin:0; padding:0; list-style:none; }
 /* ---------- 20. Noticias ---------- */
 .news { background:var(--paper); }
 .news__grid { display:grid; gap:1.4rem; margin-top:clamp(2rem,4vw,3rem); }
-.news-card { display:flex; flex-direction:column; background:#fff; border-radius:var(--leaf); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .4s var(--ease), box-shadow .4s var(--ease); }
+.news-card { display:flex; flex-direction:column; background:#fff; border-radius:var(--leaf); overflow:hidden; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .4s var(--ease), box-shadow .4s var(--ease); }
 .news-card:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
 .news-card__img { aspect-ratio:16/10; overflow:hidden; position:relative; }
 .news-card__img::after { content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.35), transparent 50%); }
@@ -431,6 +448,20 @@ ul { margin:0; padding:0; list-style:none; }
 .cta__contact svg { width:20px; height:20px; color:var(--amarillo-cl); }
 .cta__contact a, .cta__contact span { color:#fff; }
 .cta__contact b { display:block; font-size:var(--step--1); color:rgba(255,255,255,.65); font-weight:400; }
+
+/* Catálogo: galería de imágenes + tabla de características */
+.gallery__main { border-radius:var(--leaf); overflow:hidden; box-shadow:var(--shadow); background:var(--paper-2); }
+.gallery__main img { width:100%; height:auto; max-height:560px; object-fit:contain; display:block; }
+.gallery__thumbs { display:grid; grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); gap:.6rem; margin-top:.8rem; }
+.gallery__thumb { padding:0; border:2px solid transparent; border-radius:var(--r-sm); overflow:hidden; cursor:pointer; background:var(--paper-2); transition:border-color .25s var(--ease); }
+.gallery__thumb img { width:100%; height:72px; object-fit:cover; display:block; }
+.gallery__thumb.is-active, .gallery__thumb:hover, .gallery__thumb:focus-visible { border-color:var(--bordo); }
+.specs-table { width:100%; border-collapse:collapse; background:#fff; border-radius:var(--leaf-sm); overflow:hidden; box-shadow:var(--shadow-sm); margin-top:1rem; }
+.specs-table td { padding:.8rem 1.1rem; border-bottom:1px solid var(--paper-2); color:var(--texto); font-size:var(--step--1); }
+.specs-table th { padding:.8rem 1.1rem; border-bottom:1px solid var(--paper-2); color:var(--texto); font-size:var(--step--1); font-weight:600; text-align:left; width:40%; }
+.specs-table tr:last-child td, .specs-table tr:last-child th { border-bottom:none; }
+.specs-table tr:nth-child(even) th { background:var(--paper); }
+.specs-table tr:nth-child(even) td { background:var(--paper); }
 
 /* Form: tarjeta CREMA con grilla creativa de 12 columnas */
 .form { background:var(--paper); color:var(--texto); border-radius:var(--leaf); padding:clamp(1.5rem,2.8vw,2.2rem); box-shadow:var(--shadow); }
@@ -515,6 +546,7 @@ ul { margin:0; padding:0; list-style:none; }
 @media (min-width:1024px) {
   .nav { display:block; }
   .header__cta { display:inline-flex; }
+  .header__inner > .lang-switch { margin-left:0; }
   .nav-toggle { display:none; }
   .intro__grid { grid-template-columns:1.05fr 1fr; align-items:start; }
   .tech__grid { grid-template-columns:.85fr 1.15fr; }

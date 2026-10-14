@@ -7,6 +7,7 @@
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isEn = (document.documentElement.lang || '').slice(0, 2) === 'en';
 
   /* ---------- Cursor gota (solo puntero fino) ---------- */
   var cursor = document.getElementById('cursor');
@@ -24,7 +25,7 @@
     document.addEventListener('mouseleave', function () { cursor.classList.remove('is-active'); active = false; });
 
     // Hover: agranda sobre links/botones, se oculta sobre campos de texto
-    var clickSel = 'a, button, .btn, label, [role="button"]';
+    var clickSel = 'a, button, .btn, label, [role="button"], .card-model, .news-card';
     var textSel = 'input, textarea, select';
     document.addEventListener('mouseover', function (e) {
       if (e.target.closest(textSel)) cursor.classList.add('is-hidden');
@@ -48,6 +49,17 @@
       requestAnimationFrame(raf);
     }
   }
+
+  /* ---------- Tarjetas clickeables: toda el área de .card-model / .news-card navega a su ficha ---------- */
+  document.querySelectorAll('.card-model, .news-card').forEach(function (card) {
+    var link = card.querySelector('.card-model__link, .news-card__link');
+    if (!link) return;
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      if (e.ctrlKey || e.metaKey || e.shiftKey) { window.open(link.href, '_blank'); return; }
+      window.location.href = link.href;
+    });
+  });
 
   /* ---------- Ticker: duplicar contenido para loop continuo ---------- */
   var ticker = document.getElementById('ticker');
@@ -104,7 +116,7 @@
           var b = document.createElement('button');
           b.type = 'button';
           b.className = 'reviews__dot' + (i === 0 ? ' is-active' : '');
-          b.setAttribute('aria-label', 'Ver reseña ' + (i + 1));
+          b.setAttribute('aria-label', (isEn ? 'View review ' : 'Ver reseña ') + (i + 1));
           b.addEventListener('click', function () { revShow(i); revRestart(); });
           revDotsWrap.appendChild(b);
           revDots.push(b);
@@ -154,13 +166,13 @@
     if (!menu) return;
     menu.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir menú');
+    toggle.setAttribute('aria-label', isEn ? 'Open menu' : 'Abrir menú');
     document.body.style.overflow = '';
   }
   function openMenu() {
     menu.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Cerrar menú');
+    toggle.setAttribute('aria-label', isEn ? 'Close menu' : 'Cerrar menú');
     document.body.style.overflow = 'hidden';
   }
   if (toggle && menu) {
@@ -230,7 +242,7 @@
   /* ---------- Scroll-spy: marca el link activo del nav ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
   var spyTargets = navLinks
-    .map(function (l) { var id = l.getAttribute('href'); return { link: l, sec: id && id.length > 1 ? document.querySelector(id) : null }; })
+    .map(function (l) { var id = l.getAttribute('href'); return { link: l, sec: id && id.charAt(0) === '#' && id.length > 1 ? document.querySelector(id) : null }; })
     .filter(function (t) { return t.sec; });
   if (spyTargets.length && 'IntersectionObserver' in window) {
     var spyObs = new IntersectionObserver(function (entries) {
@@ -260,9 +272,9 @@
 
   /* ---------- reCAPTCHA v3 (carga la site key desde api/recaptcha-key.php, nunca queda escrita en el código fuente) ---------- */
   var recaptchaReady = null;
-  function loadRecaptcha() {
+  function loadRecaptcha(keyUrl) {
     if (recaptchaReady) return recaptchaReady;
-    recaptchaReady = fetch('api/recaptcha-key.php')
+    recaptchaReady = fetch(keyUrl || 'api/recaptcha-key.php')
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !data.key) { console.warn('reCAPTCHA: falta configurar la site key.'); return null; }
@@ -286,11 +298,12 @@
   var success = document.getElementById('formSuccess');
   if (form) {
     var endpoint = form.getAttribute('data-endpoint');
+    var recaptchaKeyUrl = endpoint ? endpoint.replace(/[^\/]*$/, 'recaptcha-key.php') : 'api/recaptcha-key.php';
     var recaptchaAction = endpoint ? endpoint.replace(/^.*\//, '').replace(/\.php$/, '') : 'submit';
     var submitBtn = form.querySelector('button[type="submit"]');
     var submitLabel = submitBtn ? submitBtn.textContent : '';
 
-    loadRecaptcha();
+    loadRecaptcha(recaptchaKeyUrl);
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -300,9 +313,9 @@
       }
       if (!endpoint) return;
 
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = isEn ? 'Sending...' : 'Enviando...'; }
 
-      loadRecaptcha()
+      loadRecaptcha(recaptchaKeyUrl)
         .then(function (siteKey) {
           if (!siteKey) return '';
           return window.grecaptcha.execute(siteKey, { action: recaptchaAction });
@@ -310,6 +323,7 @@
         .then(function (token) {
           var formData = new FormData(form);
           formData.set('recaptcha_token', token || '');
+          formData.set('lang', isEn ? 'en' : 'es');
           return fetch(endpoint, { method: 'POST', body: formData });
         })
         .then(function (res) {
@@ -319,7 +333,7 @@
         })
         .then(function (result) {
           if (!result.ok || !result.data || !result.data.ok) {
-            throw new Error((result.data && result.data.error) || 'No pudimos enviar el formulario.');
+            throw new Error((result.data && result.data.error) || (isEn ? 'We could not send the form.' : 'No pudimos enviar el formulario.'));
           }
           var fields = form.querySelectorAll('.field, .form__note, button[type="submit"]');
           fields.forEach(function (f) { f.style.display = 'none'; });
@@ -327,9 +341,18 @@
         })
         .catch(function (err) {
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
-          window.alert(err.message || 'No pudimos enviar el formulario. Probá de nuevo.');
+          window.alert(err.message || (isEn ? 'We could not send the form. Please try again.' : 'No pudimos enviar el formulario. Probá de nuevo.'));
         });
     });
+  }
+
+  /* ---------- Formulario de producto: completa el campo "modelo" con el título de la página, sin tipeo manual ---------- */
+  var productFormValue = form && form.querySelector('.product-form__value');
+  if (productFormValue) {
+    var productTitle = document.querySelector('.page-hero h1');
+    if (productTitle) {
+      productFormValue.value = productTitle.textContent.replace(/\.\s*$/, '').trim();
+    }
   }
 
   /* ---------- Año dinámico en footer ---------- */
@@ -363,5 +386,48 @@
       item.addEventListener('focus', function () { setSrc(item.getAttribute('data-hist-img')); });
     });
     grid.querySelector('.timeline').addEventListener('mouseleave', function () { setSrc(defaultSrc); });
+  });
+
+  /* ---------- Filtros por categoría (Novedades, Productos nuevos/usados) ---------- */
+  document.querySelectorAll('.filters[id]').forEach(function (filters) {
+    var grid = filters.nextElementSibling;
+    if (!grid) return;
+    var cards = grid.querySelectorAll('[data-cat]');
+    var empty = grid.querySelector('.news-empty');
+
+    filters.querySelectorAll('.filter').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filters.querySelectorAll('.filter').forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        var cat = btn.getAttribute('data-cat');
+        var visible = 0;
+        cards.forEach(function (card) {
+          var show = cat === 'todas' || card.getAttribute('data-cat') === cat;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible !== 0;
+      });
+    });
+  });
+
+  /* ---------- Galería de imágenes (catálogo de productos) ---------- */
+  document.querySelectorAll('.gallery').forEach(function (gallery) {
+    var main = gallery.querySelector('#galleryMain');
+    if (!main) return;
+    gallery.querySelectorAll('.gallery__thumb').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var full = thumb.getAttribute('data-full');
+        if (!full) return;
+        main.setAttribute('src', full);
+        gallery.querySelectorAll('.gallery__thumb').forEach(function (t) { t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+      });
+    });
   });
 })();

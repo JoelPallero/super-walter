@@ -1,0 +1,37 @@
+.wape-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px 24px;
+	font-size: 15px;
+	text-decoration: none;
+	font-family: inherit;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.wape-btn:hover,
+.wape-btn:focus {
+	text-decoration: none;
+}
+
+.wape-btn-icon {
+	display: inline-flex;
+	align-items: center;
+	line-height: 1;
+}
+
+svg.wape-btn-icon {
+	fill: currentColor;
+}
+
+.wape-btn-notice {
+	padding: 10px 15px;
+	background: #fff3cd;
+	border: 1px solid #ffe69c;
+	color: #664d03;
+	font-size: 13px;
+	border-radius: 4px;
+}

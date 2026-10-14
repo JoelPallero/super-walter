@@ -8,6 +8,9 @@
   'use strict';
 
   var DATA = window.SW_SUCURSALES || [];
+  var isEn = (document.documentElement.lang || '').slice(0, 2) === 'en';
+  var scriptEl = document.querySelector('script[src*="sucursales.js"]');
+  var apiBase = scriptEl ? scriptEl.getAttribute('src').replace('assets/js/sucursales.js', '') : '';
   var mapEl = document.getElementById('sucMap');
   var listEl = document.getElementById('sucList');
   var countEl = document.getElementById('sucCount');
@@ -36,7 +39,7 @@
     if (!mapEl) return;
     if (window.google && window.google.maps) { callback(); return; }
 
-    fetch('api/maps-key.php')
+    fetch(apiBase + 'api/maps-key.php')
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !data.key) { console.warn('Sucursales: falta configurar la API key de Google Maps.'); return; }
@@ -78,7 +81,7 @@
     var seen = {};
     DATA.forEach(function (s) { if (s.c === state.country) seen[s.p] = true; });
     var list = Object.keys(seen).sort(function (a, b) { return a.localeCompare(b, 'es'); });
-    var html = '<option value="">Todas las provincias</option>';
+    var html = '<option value="">' + (isEn ? 'All provinces' : 'Todas las provincias') + '</option>';
     list.forEach(function (p) { html += '<option value="' + esc(p) + '">' + esc(p) + '</option>'; });
     provinceSel.innerHTML = html;
   }
@@ -96,17 +99,17 @@
   /* ---------- Render ---------- */
   function render() {
     var items = filtered();
-    if (countEl) countEl.innerHTML = '<b>' + items.length + '</b> ' + (items.length === 1 ? 'sucursal encontrada' : 'sucursales encontradas');
+    if (countEl) countEl.innerHTML = '<b>' + items.length + '</b> ' + (isEn ? (items.length === 1 ? 'branch found' : 'branches found') : (items.length === 1 ? 'sucursal encontrada' : 'sucursales encontradas'));
 
     if (!items.length) {
-      listEl.innerHTML = '<p class="suc-empty">No encontramos sucursales con esos filtros. Probá con otra búsqueda o <a href="index.html#cta">hablá con nosotros</a>.</p>';
+      listEl.innerHTML = (isEn ? '<p class="suc-empty">We found no branches matching those filters. Try another search or <a href="./#cta">talk to us</a>.</p>' : '<p class="suc-empty">No encontramos sucursales con esos filtros. Probá con otra búsqueda o <a href="./#cta">hablá con nosotros</a>.</p>');
     } else {
       listEl.innerHTML = items.map(function (s, i) {
         var metaParts = [];
         if (s.t) metaParts.push('<a href="' + telHref(s.t) + '">' + esc(s.t) + '</a>');
         if (s.e) metaParts.push('<a href="mailto:' + esc(s.e) + '">' + esc(s.e) + '</a>');
         var meta = metaParts.length ? '<p class="suc-card__meta">' + metaParts.join(' <span class="suc-card__dot">·</span> ') + '</p>' : '';
-        return '<article class="suc-card" data-idx="' + i + '" tabindex="0" role="button" aria-label="Ver ' + esc(s.n) + ' en el mapa">' +
+        return '<article class="suc-card" data-idx="' + i + '" tabindex="0" role="button" aria-label="' + (isEn ? 'View ' + esc(s.n) + ' on the map' : 'Ver ' + esc(s.n) + ' en el mapa') + '">' +
           '<div class="suc-card__top">' +
             '<span class="suc-card__pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>' +
             '<div class="suc-card__head">' +
